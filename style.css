@@ -1,0 +1,25 @@
+.playerbox{
+    display: flex;
+    flex-direction: column;
+}
+.encapsulate{
+    display: flex;
+    flex-direction: row;
+}
+
+.spacing{
+    width: 75px;
+    height: 30px;
+    border: solid 1px black;
+    padding-left: 12px;
+}
+.spacing2{
+    width: 100px;
+    height: 30px;
+    border: solid 1px black;
+    padding-left: .75em;
+}
+
+.nameLine{
+    padding-top: 25px;
+}
