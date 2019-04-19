@@ -1,21 +1,24 @@
-.playerbox{
+.scorecard{
     display: flex;
-    flex-direction: column;
 }
-.encapsulate{
+.playerbox{
     display: flex;
     flex-direction: row;
 }
+.encapsulate{
+    display: flex;
+    flex-direction: column;
+}
 
 .spacing{
-    width: 75px;
+    width: 35px;
     height: 30px;
     border: solid 1px black;
     padding-left: 12px;
     background-color: blue;
 }
 .spacing2{
-    width: 75px;
+    width: 35px;
     height: 30px;
     border: solid 1px black;
     padding-left: 12px;
@@ -25,28 +28,28 @@
     width: 100px;
     height: 30px;
     border: solid 1px black;
-    padding-left: .75em;
-    background-color: yellow;
+    padding-left: 6px;
+    background-color: forestgreen;
 }
 .spacing4{
-    width: 75px;
+    width: 35px;
     height: 30px;
     border: solid 1px black;
-    padding-left: 12px;
-    background-color: green;
+    padding-left: 3px;
+    background-color: blue;
 }
 .spacing5{
-    width: 75px;
+    width: 35px;
     height: 30px;
     border: solid 1px black;
-    padding-left: 12px;
+    padding-left: 6px;
     background-color: yellow;
 }
 .spacing5{
     width: 75px;
     height: 30px;
     border: solid 1px black;
-    padding-left: 12px;
+    padding-left: 6px;
     background-color: purple;
 }
 
@@ -58,5 +61,5 @@
     padding-left: 10px;
     color: white;
     background-color: Navy;
-    width: 400px;
+    width: 75px;
 }
