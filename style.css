@@ -12,14 +12,51 @@
     height: 30px;
     border: solid 1px black;
     padding-left: 12px;
+    background-color: blue;
 }
 .spacing2{
+    width: 75px;
+    height: 30px;
+    border: solid 1px black;
+    padding-left: 12px;
+    background-color: red;
+}
+.spacing3{
     width: 100px;
     height: 30px;
     border: solid 1px black;
     padding-left: .75em;
+    background-color: yellow;
+}
+.spacing4{
+    width: 75px;
+    height: 30px;
+    border: solid 1px black;
+    padding-left: 12px;
+    background-color: green;
+}
+.spacing5{
+    width: 75px;
+    height: 30px;
+    border: solid 1px black;
+    padding-left: 12px;
+    background-color: yellow;
+}
+.spacing5{
+    width: 75px;
+    height: 30px;
+    border: solid 1px black;
+    padding-left: 12px;
+    background-color: purple;
 }
 
+
+
 .nameLine{
-    padding-top: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    color: white;
+    background-color: Navy;
+    width: 400px;
 }

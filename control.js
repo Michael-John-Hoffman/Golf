@@ -7,34 +7,36 @@ class Player{
         this.name = name;
         this.id = nextPlayerId;
     }
-        updateTotal(){
-            
-        }
+        
         getScorecard(){
+            let scorecard = $(`<div class="scorecard"><div>`);
             let playerbox = $(".playerbox");
-            playerbox.append(`<div class="nameLine">${this.name}</div>`)
-            playerbox.append(`<div class="encapsulate">
+            scorecard.append(`<div class="nameLine">${this.name}</div>`)
+            scorecard.append(`<div class="encapsulate">
             <div class="spacing">Yards</div>
-            <div class="spacing">Par</div>
-            <div class="spacing2">Handycap </div>
-            <div class="spacing">Score </div>
-            <div class="spacing">Total </div>
+            <div class="spacing2">Par</div>
+            <div class="spacing3">Handycap </div>
+            <div class="spacing4" >Score </div>
+            <div class="spacing5">Total </div>
 
             </div>` )
         for(let i in holes){
             let hole = holes[i].teeBoxes[this.tee];
-            playerbox.append(`<div class="encapsulate">
+            scorecard.append(`<div class="encapsulate">
             <div class="spacing">${hole.yards}</div>
-            <div class="spacing">${hole.par}</div>
-            <div class="spacing2">${hole.hcp}</div>
-            <input class="spacing"></input>
-            <div class="spacing">0</div>
+            <div class="spacing2">${hole.par}</div>
+            <div class="spacing3">${hole.hcp}</div>
+            <input class="spacing4"></input>
+            <div class="spacing5 scoreAdd" >0</div>
             </div>`)
-         
-            
         }
+        $("input").change(function(e) {
+            console.log(this.value);
+        })
+        playerbox.append(scorecard);
     }
 }
+
 
 var holes = {};
 async function getCourses(){
