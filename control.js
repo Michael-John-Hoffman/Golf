@@ -52,10 +52,9 @@ class Player{
 
             </div>` )
 
-            totalYards = 0;
-            totalPar = 0;
-            totalHcp = 0;
-            totalTotal = 0;
+            let totalYards2 = 0;
+            let totalPar2 = 0;
+            let totalHcp2 = 0;
             for(let i = 9; i < holes.length; i++){
                 let hole = holes[i].teeBoxes[this.tee];
                 gridBox2.append(`<div class="encapsulate">
@@ -64,28 +63,39 @@ class Player{
                 <div class="spacing">${hole.hcp}</div>
                 <input type="number" value="0" class="spacing2"></input>
                 </div>`)
-                totalYards += hole.yards;
-                totalPar += hole.par;
-                totalHcp += hole.hcp;
+                totalYards2 += hole.yards;
+                totalPar2 += hole.par;
+                totalHcp2 += hole.hcp;
             }
+            
             gridBox2.append(`<div class="encapsulate">
-            <div class="spacing4">${totalYards}</div>
-            <div class="spacing2">${totalPar}</div>
-            <div class="spacing">${totalHcp}</div>
+            <div class="spacing4">${totalYards2}</div>
+            <div class="spacing2">${totalPar2}</div>
+            <div class="spacing">${totalHcp2}</div>
             <div class="spacing2 totalScore"></div>
             </div>`)
-        scorecard.append(gridBox)
-        scorecard.append(gridBox2)
-        playerbox.append(scorecard);
-        $("input").change(function(e) {
-            let total = 0;
-            let scores = $(this).parent().parent().find("input").toArray()
-            for(let i = 0; i < scores.length -1; i++){
-                total += parseInt(scores[i].value)
-                
-            }
-            $(this).parent().parent().find(".totalScore").text(total)
-        })
+
+            scorecard.append(gridBox)
+            scorecard.append(gridBox2)
+            playerbox.append(scorecard);
+            gridBox2.find("input").last().change(e => {
+                window.setTimeout(() => {
+                    let sum = parseInt(gridBox2.find(".totalScore").text()) - totalPar2
+                    showModal(sum)
+                    
+
+                }, 1000)
+            })
+            $("input").change(function(e) {
+                let total = 0;
+                let scores = $(this).parent().parent().find("input").toArray()
+                for(let i = 0; i < scores.length; i++){
+                    total += parseInt(scores[i].value)
+                    
+                }
+                $(this).parent().parent().find(".totalScore").text(total)
+
+            })
     }
 }
 
@@ -117,4 +127,30 @@ function deletePlayer(id){
     placePlayers();
 }
 
+function showModal(sum) {
+    var modal = document.getElementById('myModal');
 
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+
+    modal.style.display = "block";
+    
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    }
+    if(sum <= 0){
+        $(".modal-title").text("Good Job")
+    } else{
+        $(".modal-title").text("You should practice more")
+    }
+}
