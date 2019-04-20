@@ -76,10 +76,12 @@ class Player{
             </div>`)
         scorecard.append(gridBox)
         scorecard.append(gridBox2)
-        $("input").change(function(e) {
-            console.log(this.value);
-        })
         playerbox.append(scorecard);
+        $("input").change(function(e) {
+            let total = 0;
+            $(this).parent().parent().find("input").toArray().forEach(score => {total += parseInt(score.value)});
+            console.log(total);
+        })
     }
 }
 
@@ -94,7 +96,6 @@ async function getCourses(){
 
 
 function addPlayer(tee){
-    console.log('add player is firing?', tee)
     let name = $(".playerinput").val();
     $(".playerinput").val("");
     let player = new Player(tee, name, nextPlayerId);
