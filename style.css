@@ -1,11 +1,22 @@
 .scorecard{
     display: flex;
     padding-bottom: 24px;
+    flex-direction: column;
 }
+.gridBox{
+    display: flex;
+    padding-bottom: 24px;
+}
+.gridBox2{
+    display: flex;
+    padding-bottom: 24px;
+}
+
 .playerbox{
     display: flex;
     flex-direction: column;
     padding-bottom: 12px;
+    color: white;
 }
 .encapsulate{
     display: flex;
@@ -13,14 +24,14 @@
 }
 
 .spacing{
-    width: 37px;
+    width: 55px;
     height: 30px;
     border: solid 1px black;
     padding-left: 12px;
     background-color: blue;
 }
 .spacing2{
-    width: 37px;
+    width: 55px;
     height: 30px;
     border: solid 1px black;
     padding-left: 12px;
@@ -34,10 +45,10 @@
     background-color: forestgreen;
 }
 .spacing4{
-    width: 37px;
+    width: 55px;
     height: 30px;
     border: solid 1px black;
-    padding-left: 3px;
+    padding-left: 12px;
     background-color: blue;
 }
 .spacing5{

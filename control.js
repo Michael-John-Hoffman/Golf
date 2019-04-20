@@ -10,26 +10,72 @@ class Player{
         
         getScorecard(){
             let scorecard = $(`<div class="scorecard"><div>`);
+            let gridBox = $(`<div class="gridBox"></div>`);
+            let gridBox2 = $('<div class="gridBox2"></div>')
             let playerbox = $(".playerbox");
             scorecard.append(`<div class="nameLine">${this.name}</div>`)
-            scorecard.append(`<div class="encapsulate">
+            gridBox.append(`<div class="encapsulate">
             <div class="spacing3">Yards</div>
             <div class="spacing3">Par</div>
             <div class="spacing3">Handycap </div>
             <div class="spacing3" >Score </div>
-            <div class="spacing3">Total </div>
 
             </div>` )
-        for(let i in holes){
-            let hole = holes[i].teeBoxes[this.tee];
-            scorecard.append(`<div class="encapsulate">
-            <div class="spacing4">${hole.yards}</div>
-            <div class="spacing2">${hole.par}</div>
-            <div class="spacing">${hole.hcp}</div>
+            let totalYards = 0;
+            let totalPar = 0;
+            let totalHcp = 0;
+            let totalTotal = 0;
+            for(let i = 0; i < 9; i++){
+                let hole = holes[i].teeBoxes[this.tee];
+                gridBox.append(`<div class="encapsulate">
+                <div class="spacing4">${hole.yards}</div>
+                <div class="spacing2">${hole.par}</div>
+                <div class="spacing">${hole.hcp}</div>
+                <input class="spacing2"></input>
+                </div>`)
+                totalYards += hole.yards;
+                totalPar += hole.par;
+                totalHcp += hole.hcp;
+            }
+            
+            gridBox.append(`<div class="encapsulate">
+            <div class="spacing4">${totalYards}</div>
+            <div class="spacing2">${totalPar}</div>
+            <div class="spacing">${totalHcp}</div>
             <input class="spacing2"></input>
-            <div class="spacing scoreAdd" >0</div>
             </div>`)
-        }
+            gridBox2.append(`<div class="encapsulate">
+            <div class="spacing3">Yards</div>
+            <div class="spacing3">Par</div>
+            <div class="spacing3">Handycap </div>
+            <div class="spacing3" >Score </div>
+
+            </div>` )
+
+            totalYards = 0;
+            totalPar = 0;
+            totalHcp = 0;
+            totalTotal = 0;
+            for(let i = 9; i < holes.length; i++){
+                let hole = holes[i].teeBoxes[this.tee];
+                gridBox2.append(`<div class="encapsulate">
+                <div class="spacing4">${hole.yards}</div>
+                <div class="spacing2">${hole.par}</div>
+                <div class="spacing">${hole.hcp}</div>
+                <input class="spacing2"></input>
+                </div>`)
+                totalYards += hole.yards;
+                totalPar += hole.par;
+                totalHcp += hole.hcp;
+            }
+            gridBox2.append(`<div class="encapsulate">
+            <div class="spacing4">${totalYards}</div>
+            <div class="spacing2">${totalPar}</div>
+            <div class="spacing">${totalHcp}</div>
+            <input class="spacing2"></input>
+            </div>`)
+        scorecard.append(gridBox)
+        scorecard.append(gridBox2)
         $("input").change(function(e) {
             console.log(this.value);
         })
