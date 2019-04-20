@@ -78,6 +78,14 @@ class Player{
             scorecard.append(gridBox)
             scorecard.append(gridBox2)
             playerbox.append(scorecard);
+            gridBox.find("input").last().change(e => {
+                window.setTimeout(() => {
+                    let sum = parseInt(gridBox.find(".totalScore").text()) - totalPar
+                    showModal(sum)
+                    
+
+                }, 1000)
+            })
             gridBox2.find("input").last().change(e => {
                 window.setTimeout(() => {
                     let sum = parseInt(gridBox2.find(".totalScore").text()) - totalPar2
@@ -114,7 +122,7 @@ function addPlayer(tee){
     $(".playerinput").val("");
     let player = new Player(tee, name, nextPlayerId);
     player.getScorecard();
-    console.log(holes);
+
     nextPlayerId++;
     if($(".nameLine").length === 4){
         $(".playerinput, .dropdown").hide()
@@ -150,7 +158,9 @@ function showModal(sum) {
     }
     if(sum <= 0){
         $(".modal-title").text("Good Job")
+        $(".modal-body").text(`You Scored ${sum}`)
     } else{
         $(".modal-title").text("You should practice more")
+        $(".modal-body").text(`You Scored ${sum} over par`)
     }
 }
