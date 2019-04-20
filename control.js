@@ -31,7 +31,7 @@ class Player{
                 <div class="spacing4">${hole.yards}</div>
                 <div class="spacing2">${hole.par}</div>
                 <div class="spacing">${hole.hcp}</div>
-                <input class="spacing2"></input>
+                <input type="number" value="0" class="spacing2"></input>
                 </div>`)
                 totalYards += hole.yards;
                 totalPar += hole.par;
@@ -42,7 +42,7 @@ class Player{
             <div class="spacing4">${totalYards}</div>
             <div class="spacing2">${totalPar}</div>
             <div class="spacing">${totalHcp}</div>
-            <input class="spacing2"></input>
+            <div class="spacing2 totalScore"></div>
             </div>`)
             gridBox2.append(`<div class="encapsulate">
             <div class="spacing3">Yards</div>
@@ -62,7 +62,7 @@ class Player{
                 <div class="spacing4">${hole.yards}</div>
                 <div class="spacing2">${hole.par}</div>
                 <div class="spacing">${hole.hcp}</div>
-                <input class="spacing2"></input>
+                <input type="number" value="0" class="spacing2"></input>
                 </div>`)
                 totalYards += hole.yards;
                 totalPar += hole.par;
@@ -72,15 +72,19 @@ class Player{
             <div class="spacing4">${totalYards}</div>
             <div class="spacing2">${totalPar}</div>
             <div class="spacing">${totalHcp}</div>
-            <input class="spacing2"></input>
+            <div class="spacing2 totalScore"></div>
             </div>`)
         scorecard.append(gridBox)
         scorecard.append(gridBox2)
         playerbox.append(scorecard);
         $("input").change(function(e) {
             let total = 0;
-            $(this).parent().parent().find("input").toArray().forEach(score => {total += parseInt(score.value)});
-            console.log(total);
+            let scores = $(this).parent().parent().find("input").toArray()
+            for(let i = 0; i < scores.length -1; i++){
+                total += parseInt(scores[i].value)
+                
+            }
+            $(this).parent().parent().find(".totalScore").text(total)
         })
     }
 }
